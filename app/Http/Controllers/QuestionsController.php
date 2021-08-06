@@ -59,9 +59,10 @@ class QuestionsController extends Controller
      */
     public function show(Questions $questions)
     {
-
+        $auth = Auth::user()->id;
+        
         $questions = Questions::all();
-        return view('Forum', ['questions'=>$questions]);
+        return view('Forum', ['questions'=>$questions], ['auth'=>$auth]);
     }
 
     /**
