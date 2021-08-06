@@ -47,7 +47,7 @@ class QuestionsController extends Controller
 
         $question->save();
 
-        return redirect('question/add'); 
+        return redirect('questions');
 
     }
 
@@ -59,7 +59,9 @@ class QuestionsController extends Controller
      */
     public function show(Questions $questions)
     {
-        //
+
+        $questions = Questions::all();
+        return view('Forum', ['questions'=>$questions]);
     }
 
     /**
@@ -68,9 +70,11 @@ class QuestionsController extends Controller
      * @param  \App\Models\Questions  $questions
      * @return \Illuminate\Http\Response
      */
-    public function edit(Questions $questions)
+    public function edit(request $request)
     {
-        //
+        $id = $request->input('question_id');
+        $question = Questions::all()->where('id', $id);
+        return view('edit', ['question' => $question]);
     }
 
     /**
@@ -80,9 +84,13 @@ class QuestionsController extends Controller
      * @param  \App\Models\Questions  $questions
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Questions $questions)
+    public function update(Request $request)
     {
-        //
+        $question = new Questions;
+        $id = $request->input('question_id');
+        Questions::where('id', $id)->update(['title' => $request->input('title'),'description'=>$request->input('description'),'tags'=>$request->input('tags')]);
+        
+        return redirect('questions');
     }
 
     /**
@@ -91,8 +99,12 @@ class QuestionsController extends Controller
      * @param  \App\Models\Questions  $questions
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Questions $questions)
+    public function destroy(request $request)
     {
-        //
+        $question = new Questions;
+        $id = $request->input('question_id');
+        $question = Questions::where('id', $id)->find($id);
+        $question = $question->delete();
+        return redirect('questions');
     }
 }

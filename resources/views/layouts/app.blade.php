@@ -68,10 +68,10 @@
                                         @csrf
                                     </form>
                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home') }}">{{ __('My Questions') }}</a>
+                                    <a class="nav-link" href="{{ url('/questions') }}">{{ __('My Questions') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ url('/forum') }}">{{ __('Forum') }}</a>
                                 </li>
                                 </div>
                             </li>

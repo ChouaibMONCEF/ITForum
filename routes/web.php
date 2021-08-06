@@ -25,4 +25,12 @@ Route::get('/question/add', [App\Http\Controllers\QuestionsController::class, 'c
 
 Route::post('/question/store', [App\Http\Controllers\QuestionsController::class, 'store'])->name('storeQuestion');
 
+Route::get('/forum', [App\Http\Controllers\QuestionsController::class, 'show'])->name('forumQuestion');
+
+Route::post('/question/edit', [App\Http\Controllers\QuestionsController::class, 'edit'])->name('editQuestion');
+
+Route::post('/question/delete', [App\Http\Controllers\QuestionsController::class, 'destroy'])->name('deleteQuestion');
+
+Route::post('/question/update', [App\Http\Controllers\QuestionsController::class, 'update'])->name('updateQuestion');
+
 Route::get('/questions', [App\Http\Controllers\QuestionsController::class, 'index'])->name('listingQuestion');

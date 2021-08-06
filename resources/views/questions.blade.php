@@ -1,5 +1,19 @@
 @extends('layouts.app')
 @section('content')
+     <div class="d-flex justify-content-center">
+  <div class="col-sm-7 top-50 start-50 translate-middle">
+    <div class="card">
+    <button type="button" onclick="window.location='{{ url("questions") }}'" class="btn translate-middle btn-primary">Back</button>
+  </div>
+  </div>
+</div> <br>
+     <!-- <div class="d-flex justify-content-center">
+  <div class="col-sm-4 top-50 start-50 translate-middle">
+    <div class="card">
+    <button type="submit" onclick="window.location='{{ url("questions") }}'" class="btn btn-primary">Back</button>
+ </div>
+  </div>
+</div> <br> -->
     <div class=" d-flex justify-content-center">
 <form method="post" action="{{ route('storeQuestion') }}">
     @csrf
